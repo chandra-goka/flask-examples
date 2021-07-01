@@ -1,0 +1,25 @@
+{% extends "header.html" %}
+
+{% block content %}
+Hobbies:
+<div>
+    <p><ul>
+        {% for hobby in profile.hobbies %}
+        <li>{{hobby}}</li>
+        {% endfor %}
+   </ul></p>
+</div>
+Interested Books:
+<div>
+    <p><ul>
+        {% for key in profile.interested_books %}
+            {{key}}
+            <ul>
+            {% for book in profile.interested_books.get(key)%}
+                <li>{{book}}</li>
+            {% endfor %}
+            </ul>
+        {% endfor %}
+   </ul></p>
+</div>
+{% endblock %}
