@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>Hello, World!</title>
+    </head>
+    <body>
+        <h1 style="color:#093657"> Hello,
+            {% if user %}
+                {{user.name}}
+            {% else %}
+                Buddy!
+            {% endif %}
+        </h1>
+        Hobbies:
+        <div>
+            <p><ul>
+                {% for hobby in user.hobbies %}
+                <li>{{hobby}}</li>
+                {% endfor %}
+           </ul></p>
+        </div>
+        Interested Books:
+        <div>
+            <p><ul>
+                {% for key in user.interested_books %}
+                    {{key}}
+                    <ul>
+                    {% for book in user.interested_books.get(key)%}
+                        <li>{{book}}</li>
+                    {% endfor %}
+                    </ul>
+                {% endfor %}
+           </ul></p>
+        </div>
+        {% set country = 'India' %}
+        <p>I am from - {{country}}</p>
+        Filters:
+        <br>
+            {% set hobbies = user.hobbies %}
+
+            {{ 'Hobbies length: ' ~ hobbies | count }}</br>
+
+            {% set name = user.name | upper  %}
+            Name in upper - {{ name}}
+        </p>
+    </body>
+</html>
